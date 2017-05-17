@@ -1,13 +1,13 @@
-FROM python:2.7.13-alpine
+FROM alpine:3.5 
 
-RUN apk --no-cache add --virtual build-dependencies build-base \
-  && pip install pyzmq locustio \
+RUN apk --no-cache add python2 py-setuptools py2-zmq
+RUN apk --no-cache add --virtual build-dependencies build-base python2-dev py2-pip \
+  && pip install locustio \
   && apk del build-dependencies
 
-RUN mkdir /locust
-WORKDIR /locust
 VOLUME /locust
+WORKDIR /locust
 
 EXPOSE 8089
 
-ENTRYPOINT ["locust"]
+CMD ["locust"]
