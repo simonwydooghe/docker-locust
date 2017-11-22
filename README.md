@@ -9,19 +9,19 @@ Upstream project website: https://locust.io/
 ### Single instance example:
 
 ```
-docker run --rm -p 8089:8089 -v $(pwd)/locustfile.py:/locustfile.py simonwydooghe/locust --host https://example.com
+docker run --rm -p 8089:8089 -v $(pwd)/locustfile.py:/locustfile.py siwyd/locust --host https://example.com
 ```
 
 ### Distributed example:
 
 Master:
 ```
-docker run --rm -p 5557-5558:5557-5558 -v $(pwd)/locustfile.py:/locustfile.py simonwydooghe/locust --host https://www.example.com --no-web -c 1000 -r 100 --master --expect-slaves 2
+docker run --rm -p 5557-5558:5557-5558 -v $(pwd)/locustfile.py:/locustfile.py siwyd/locust --host https://www.example.com --no-web -c 1000 -r 100 --master --expect-slaves 2
 ```
 
 Slaves:
 ```
-docker run --rm -v $(pwd)/locustfile.py:/locustfile.py simonwydooghe/locust --slave --master-host=master
+docker run --rm -v $(pwd)/locustfile.py:/locustfile.py siwyd/locust --slave --master-host=master
 ```
 
 ### Customize
